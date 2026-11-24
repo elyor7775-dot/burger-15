@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f5efe6; /* Rasmda ko'rsatilganidek yumshoq och-foni */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.gallery-container {
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+  position: relative;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: scrollLeft 20s linear infinite;
+}
+
+/* Sichqoncha ustiga kelganda animatsiya to'xtaydi */
+.gallery-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.card {
+  width: 280px;
+  height: 180px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Kichik effekt: Sichqoncha rasm ustiga borilganda biroz kattalashadi */
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* O'ngdan chapga uzluksiz harakat animatsiyasi */
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Project-specific styles */
+.container {
+  max-width: 900px;
+  margin: 32px auto;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(50,50,93,0.08);
+}
+.hero h1 { font-size: 1.6rem; color: #1f2937; }
+.subtitle { color: #6b7280; margin-top: 6px; }
+.lab { margin-top: 18px; }
+form label { display: block; margin: 8px 0; color: #374151; }
+.row { display: flex; gap: 12px; flex-wrap: wrap; }
+.row > div { flex: 1; min-width: 220px; }
+input[type="text"], input[type="number"], input[type="email"], input[id] {
+  width: 100%; padding: 8px 10px; border-radius: 6px; border: 1px solid #e5e7eb;
+}
+.actions { margin-top: 12px; display:flex; gap:8px; }
+button { padding: 8px 12px; border-radius:8px; border: none; cursor:pointer; background:#2563eb; color:#fff }
+button#reset { background:#6b7280 }
+button#print { background:#10b981 }
+.results { margin-top: 16px; }
+.notes { margin-top: 20px; color: #6b7280; font-size: 0.95rem }
+
+/* Print-friendly */
+@media print {
+  body { background: #fff }
+  .container { box-shadow: none }
+  button, input { display: none }
+}
+
+/* Modal styles */
+#modal-root { position: fixed; inset: 0; pointer-events: none; }
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); display:flex; align-items:center; justify-content:center; pointer-events: auto }
+.modal-dialog { background: #fff; padding: 18px; border-radius: 10px; max-width: 760px; width: 94%; box-shadow: 0 12px 40px rgba(0,0,0,0.25); position:relative }
+.modal-close { position:absolute; right:12px; top:8px; border:none; background:transparent; font-size:18px; cursor:pointer }
+
+/* Navigation */
+.topnav ul { list-style:none; display:flex; gap:12px; padding:0 6px; align-items:center }
+.topnav a { text-decoration:none; color:#2563eb }
+.topnav button { background:#10b981; color:#fff; border:none; padding:6px 10px; border-radius:6px }
+
+.uploader { border:1px dashed #e5e7eb; padding:12px; border-radius:8px }
+.uploader input { display:block; margin-top:6px }
+.uploader-preview { background:#fafafa; border-radius:6px; padding:8px; margin-top:8px }
+
+.btn-load, .btn-clear { padding:6px 10px; margin-right:6px }
